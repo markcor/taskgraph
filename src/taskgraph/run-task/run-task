@@ -622,6 +622,14 @@ def git_checkout(
             base_repo if base_repo else head_repo,
             destination_path,
         ]
+        arg = [
+            "git",
+            "config",
+            "--global",
+            "--add",
+            "safe.directory",
+            destination_path,
+        ]
 
         retry_required_command(b"vcs", args, extra_env=env)
 
